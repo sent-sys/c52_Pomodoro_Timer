@@ -31,21 +31,19 @@ export default function Status({ session, focusDuration, breakDuration }) {
                 aria-valuemin="0"
                 aria-valuemax="100"
                 aria-valuenow={
-                  ((100 * session.timeRemaining) /
+                  100 -
+                  (100 * session.timeRemaining) /
                     (session.label === "Focusing"
                       ? focusDuration * 60
-                      : breakDuration * 60) -
-                    100) *
-                  -1
+                      : breakDuration * 60)
                 } // TODO: Increase aria-valuenow as elapsed time increases
                 style={{
                   width: `${
-                    ((100 * session.timeRemaining) /
+                    100 -
+                    (100 * session.timeRemaining) /
                       (session.label === "Focusing"
                         ? focusDuration * 60
-                        : breakDuration * 60) -
-                      100) *
-                    -1
+                        : breakDuration * 60)
                   }%`,
                 }} // TODO: Increase width % as elapsed time increases
               />
